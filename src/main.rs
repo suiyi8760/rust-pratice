@@ -1,20 +1,23 @@
-fn apply(v: i32, f: fn(i32) -> i32) -> i32 {
-    f(v)
+struct ArticleId(i64);
+
+struct ArticleName(String);
+
+enum EArticleTag {
+    LIFE,
+    TECH,
+    OTHER,
 }
 
-fn square(v: i32) -> i32 {
-    v * v
-}
-
-fn double(v: i32) -> i32 {
-    v+v
+struct Article {
+    id: ArticleId,
+    name: ArticleName,
+    tag: EArticleTag,
 }
 
 fn main() {
-    
-    let sum = {
-        apply(10,square) + apply(20,double)
+    let article = Article {
+        id: ArticleId(1),
+        name: ArticleName("OOO".into()),
+        tag: EArticleTag::OTHER,
     };
-
-    println!("result: {}",sum);
 }
