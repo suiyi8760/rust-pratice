@@ -1,16 +1,20 @@
-use std::fs;
+fn apply(v: i32, f: fn(i32) -> i32) -> i32 {
+    f(v)
+}
+
+fn square(v: i32) -> i32 {
+    v * v
+}
+
+fn double(v: i32) -> i32 {
+    v+v
+}
 
 fn main() {
-    let url = "https://www.rust-lang.org/"; 
-    let output = "rust.md";
+    
+    let sum = {
+        apply(10,square) + apply(20,double)
+    };
 
-    println!("Fetching url: {}", url);
-    let body = reqwest::blocking::get(url).unwrap().text().unwrap();
-    println!("Fetching body: {}", body);
-    
-    println!("Converting html to markdown..."); 
-    let md = html2md::parse_html(&body);
-    
-    fs::write(output, md.as_bytes());
-    println!("Converted markdown has been saved in {}.", output);
+    println!("result: {}",sum);
 }
