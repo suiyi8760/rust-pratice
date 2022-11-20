@@ -1,23 +1,13 @@
-struct ArticleId(i64);
-
-struct ArticleName(String);
-
-enum EArticleTag {
-    LIFE,
-    TECH,
-    OTHER,
-}
-
-struct Article {
-    id: ArticleId,
-    name: ArticleName,
-    tag: EArticleTag,
-}
-
 fn main() {
-    let article = Article {
-        id: ArticleId(1),
-        name: ArticleName("OOO".into()),
-        tag: EArticleTag::OTHER,
-    };
+    for i in 1..9 {
+        let mut line = "".to_string();
+        for j in 1..9 {
+            if j <= i {
+                line += &format!("{}*{}={};", i, j, i * j);
+            } else {
+                break;
+            }
+        }
+        println!("{}", line);
+    }
 }
